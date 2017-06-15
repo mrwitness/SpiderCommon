@@ -23,18 +23,12 @@ public class ShellUtil {
     }
 
     private static boolean init = false;
-    public static void init(){
-        if(!init){
+
+    public static void init() {
+        if (!init) {
             init = true;
 
-            String path = FileUtil.getCurrentPath() + shellOpenProxyFile;  //写shell文件
-            /*
-            if (!FileUtil.checkFileExist(path)) {
-                String shell = "open -t " + ipproxyFile;
-                FileUtil.writeToFile(path, shell);
-            }
-            ShellUtil.chmod(path, 0777);
-            */
+            String path = null;
 
             path = FileUtil.getCurrentPath() + shellKillprocessFile;
             if (!FileUtil.checkFileExist(path)) {
@@ -49,15 +43,6 @@ public class ShellUtil {
                 FileUtil.writeToFile(path, shell);
             }
             ShellUtil.chmod(path, 0777);
-
-            /*
-            path = getCurrentPath() + shellCheckRedisRunning;
-            if (!FileUtil.checkFileExist(path)) {
-                String shell = "redis-cli -h " + redisIp + " -p " + redisPort + " ping";
-                FileUtil.writeToFile(path, shell);
-            }
-            ShellUtil.chmod(path, 0777);
-            */
         }
 
     }

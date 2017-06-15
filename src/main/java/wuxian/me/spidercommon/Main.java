@@ -9,7 +9,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        FileUtil.initWithClass(Main.class);
+        System.out.println(System.getProperty("user.dir"));
 
         FileUtil.writeToFile(FileUtil.getCurrentPath()+"/test.txt","hello_world");
     }

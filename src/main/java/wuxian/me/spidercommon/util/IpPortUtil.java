@@ -8,6 +8,18 @@ import java.util.regex.Pattern;
  */
 public class IpPortUtil {
 
+    static Pattern ipPattern = null;
+    static Pattern portPattern = null;
+
+    static {
+        String reg1 = "[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+";
+        ipPattern = Pattern.compile(reg1);
+
+        String reg2 = "[0-9]+";
+        portPattern = Pattern.compile(reg2);
+
+    }
+
     private IpPortUtil() {
     }
 
@@ -24,16 +36,12 @@ public class IpPortUtil {
             return false;
         }
 
-        String reg1 = "[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+";
-        Pattern pattern = Pattern.compile(reg1);
-        Matcher matcher = pattern.matcher(ipport[0]);
+        Matcher matcher = ipPattern.matcher(ipport[0]);
         if (!matcher.matches()) {
             return false;
         }
 
-        String reg2 = "[0-9]+";
-        pattern = Pattern.compile(reg2);
-        matcher = pattern.matcher(ipport[1]);
+        matcher = portPattern.matcher(ipport[1]);
         return matcher.matches();
     }
 }
