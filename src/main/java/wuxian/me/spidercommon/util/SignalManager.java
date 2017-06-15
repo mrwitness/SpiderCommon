@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class SignalManager implements SignalHandler {
 
-    private List<OnSystemKill> killList = new ArrayList<OnSystemKill>();
+    private static List<OnSystemKill> killList = new ArrayList<OnSystemKill>();
 
     //系统的支持程度各异
     public SignalManager() {
@@ -43,7 +43,7 @@ public class SignalManager implements SignalHandler {
         }
     }
 
-    public void registerOnSystemKill(@NotNull OnSystemKill onSystemKill) {
+    public static void registerOnSystemKill(@NotNull OnSystemKill onSystemKill) {
         if (!killList.contains(onSystemKill)) {
             killList.add(onSystemKill);
         }

@@ -25,7 +25,6 @@ public class Proxy {
 
     }
 
-    //标准hashcode的实现
     @Override
     public int hashCode() {
         int result = ip != null ? ip.hashCode() : 0;
