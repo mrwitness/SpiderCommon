@@ -8,6 +8,7 @@ import wuxian.me.spidercommon.log.LogManager;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.jar.JarFile;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -65,6 +66,20 @@ public class FileUtil {
             return content;
         } catch (IOException e) {
             LogManager.error("FileUtil.readFromFile path:" + path + " e:" + e.getMessage());
+
+            return null;
+        }
+    }
+
+    @Nullable
+    public static File getCurrentRunningFile() {
+        try {
+            //取当前jar做检查
+            File file = new File(FileUtil.class.getProtectionDomain().
+                    getCodeSource().getLocation().toURI().getPath());
+
+            return file;
+        } catch (Exception e) {
 
             return null;
         }
