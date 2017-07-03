@@ -23,7 +23,7 @@ public class SignalManager implements SignalHandler {
         try {
             Signal.handle(new Signal(sig), this);
         } catch (Exception e) {
-            LogManager.error("SignalManager " + sig + ": " + e.getMessage());
+            //LogManager.error("SignalManager " + sig + ": " + e.getMessage());
         }
     }
 
@@ -37,7 +37,7 @@ public class SignalManager implements SignalHandler {
     }
 
     public void handle(Signal signal) {
-        LogManager.info("Signal: " + signal.getName());
+        LogManager.info("SignalManager.receive signal: " + signal.getName());
         for (OnSystemKill onSystemKill : killList) {
             onSystemKill.onSystemKilled();
         }
