@@ -7,6 +7,8 @@ import org.htmlparser.NodeFilter;
 import org.htmlparser.util.NodeList;
 import org.htmlparser.util.ParserException;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -141,6 +143,25 @@ public class ParsingUtil {
         return null;
     }
 
+
+    @Nullable
+    public static List<String> matchedStrings(Pattern pattern, String origin) {
+        if (origin == null || origin.length() == 0 || pattern == null) {
+            return null;
+        }
+
+        Matcher matcher = pattern.matcher(origin);
+        List<String> list = new ArrayList<String>();
+        while (matcher.find()) {
+            String s = matcher.group();
+            if (!list.contains(s)) {
+                list.add(s);
+                ;
+            }
+        }
+
+        return list.size() == 0 ? null : list;
+    }
 
     public static Integer matchedInteger(Pattern pattern, String origin) {
         String match = matchedString(pattern, origin);
