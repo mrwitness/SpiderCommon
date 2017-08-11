@@ -31,4 +31,12 @@ public class Proxy {
         result = 31 * result + port;
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "Proxy{" +
+                "ip='" + ip + '\'' +
+                ", port=" + port +
+                '}';
+    }
 }
